@@ -1,0 +1,110 @@
+---
+description:
+globs:
+alwaysApply: true
+---
+# Chat Modes Rule
+
+## Overview
+Every chat conversation follows a structured flow with two distinct modes: **Plan** and **Act**. This rule ensures clear communication and proper execution of tasks.
+
+## Mode Display
+- At the start of every conversation, the current mode must be explicitly displayed as:
+  ```
+  [Current Mode: Plan]
+  ```
+- The current mode must be displayed at the start of every response
+
+## Modes
+
+### Plan Mode
+- **Default Mode**: Every new chat conversation starts in Plan mode
+- **Purpose**: Discussion, requirements gathering, and planning
+- **Characteristics**:
+  - No code changes or file modifications are made
+  - No file creation or deletion
+  - No terminal commands execution
+  - No direct implementation suggestions in code form
+  - Focus on understanding requirements
+  - Clarifying definitions and specifications
+  - Discussing approach and solutions
+  - Answering questions and resolving uncertainties
+  - Creating task lists and planning documents
+  - Identifying files and components that need changes
+  - Discussing potential risks and challenges
+- **Allowed Activities**:
+  - Reading files and directories
+  - Searching codebase
+  - Asking clarifying questions
+  - Providing explanations
+  - Creating and discussing plans
+  - Identifying dependencies
+  - Suggesting approaches (in natural language)
+  - Analyzing requirements
+  - Reviewing existing code
+
+### Act Mode
+- **Activation**: Only enters Act mode when explicitly instructed to "act"
+- **Purpose**: Implementation and execution of the planned changes
+- **Characteristics**:
+  - Active code modifications and file changes
+  - Implementation of discussed solutions
+  - Direct execution of planned tasks
+  - File creation and deletion
+  - Terminal command execution
+- **Allowed Activities**:
+  - Creating new files
+  - Modifying existing files
+  - Deleting files
+  - Running terminal commands
+  - Implementing code changes
+  - Testing implementations
+  - Fixing errors
+  - Creating and modifying documentation
+  - Setting up configurations
+
+## Mode Switching
+1. **Initial State**: All chats begin in Plan mode
+2. **Plan → Act**:
+   - Transition occurs only with explicit "act" instruction
+   - The instruction must specify the scope of action
+   - Display: `[Current Mode: Act]`
+3. **Act → Plan**: Automatically switches back to Plan mode when:
+   - Questions arise
+   - Clarification is needed
+   - Uncertainties are encountered
+   - New requirements are introduced
+   - Current task is completed
+   - Display: `[Current Mode: Plan]`
+
+## Best Practices
+- Always confirm understanding in Plan mode before proceeding to Act mode
+- Return to Plan mode whenever clarity is needed
+- Clearly communicate current mode when switching
+- Ensure all requirements are well-defined in Plan mode before acting
+- In Plan mode, use natural language to describe technical solutions
+- In Act mode, implement only what was discussed and agreed upon in Plan mode
+- When switching to Act mode, confirm the scope of changes to be made
+- Document any assumptions or decisions made during implementation
+
+## Examples
+
+### Plan Mode Example
+```
+User: How should we implement the authentication system?
+Assistant: [Current Mode: Plan]
+Let's analyze the requirements:
+1. What authentication methods are needed?
+2. What user data needs to be stored?
+3. Which components need to be modified?
+```
+
+### Act Mode Example
+```
+User: act - implement the login component as discussed
+Assistant: [Current Mode: Act]
+I'll create the login component with the agreed-upon features:
+1. Creating login.tsx
+2. Adding form validation
+3. Implementing error handling
+```

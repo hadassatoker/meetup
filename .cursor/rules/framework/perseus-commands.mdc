@@ -1,0 +1,105 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# Rule Name: perseus-commands
+# Description: Standard commands for running, testing, and linting projects
+
+---
+globs:
+alwaysApply: Manual
+---
+
+# Project Run Commands
+
+## Linting
+Run lint using the following command:
+```bash
+npx nx run <PROJECT>:eslint --fix
+```
+Example: `npx nx run seller_ai_model_pegasus:eslint --fix`
+
+For Perseus applications like order_page_perseus, you can also run stylelint:
+```bash
+npx nx run <PROJECT>:stylelint
+```
+Example: `npx nx run order_page_perseus:stylelint`
+
+## Testing
+Run tests using the following command:
+```bash
+npx nx test <PROJECT>
+```
+Example: `npx nx test seller_ai_model_pegasus`
+
+Run specific tests using the following command:
+```bash
+nx test <PROJECT> <TEST_FILE_PATH>
+```
+Example: `nx test seller_ai_model_pegasus apps/seller_ai_model_pegasus/specs/announcements/announcements.e2e.spec.ts`
+
+For Perseus applications, run end-to-end tests:
+```bash
+npx nx run <PROJECT>:e2e
+```
+Example: `npx nx run order_page_perseus:e2e`
+
+## Running Applications
+Run a Perseus application:
+```bash
+npx nx start <PROJECT>
+```
+Example: `npx nx start order_page_perseus`
+
+Run just the server component:
+```bash
+npx nx run <PROJECT>:server
+```
+Example: `npx nx run order_page_perseus:server`
+
+## Building Applications
+Build a project:
+```bash
+npx nx build <PROJECT>
+```
+Example: `npx nx build order_page_perseus`
+
+For Perseus applications, compile the server:
+```bash
+npx nx run <PROJECT>:compile
+```
+Example: `npx nx run order_page_perseus:compile`
+
+## Storybook
+Run Storybook:
+```bash
+npx nx run <PROJECT>:storybook
+```
+Example: `npx nx run order_page_perseus:storybook`
+
+Build Storybook:
+```bash
+npx nx run <PROJECT>:build-storybook
+```
+Example: `npx nx run order_page_perseus:build-storybook`
+
+## Translation
+Generate translations:
+```bash
+npx nx run <PROJECT>:translate
+```
+Example: `npx nx run order_page_perseus:translate`
+
+## Pre-Push Preparation
+Run pre-push preparation using the following command:
+```bash
+npx nx run <PROJECT>:test-coverage && npx nx run <PROJECT>:eslint --fix && npx nx format:write
+```
+Example: `npx nx run seller_ai_model_pegasus:test-coverage && npx nx run seller_ai_model_pegasus:eslint --fix && npx nx format:write`
+
+For Perseus applications:
+```bash
+npx nx test <PROJECT> && npx nx run <PROJECT>:eslint --fix && npx nx run <PROJECT>:stylelint && npx nx format:write
+```
+Example: `npx nx test order_page_perseus && npx nx run order_page_perseus:eslint --fix && npx nx run order_page_perseus:stylelint && npx nx format:write`

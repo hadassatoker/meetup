@@ -1,0 +1,139 @@
+---
+description:
+globs:
+alwaysApply: true
+---
+# Documentation Management Rule
+
+## Overview
+This rule establishes strict guidelines for documentation management, ensuring comprehensive project context and up-to-date documentation throughout development.
+
+## Documentation Reading Protocol
+
+### Initial Context Loading
+1. **Mandatory Documentation Review**
+   - At the start of EVERY new chat session, ALL documentation files under `.cursor/docs/` MUST be read to establish full context
+   - This includes, but is not limited to:
+     * Architecture documentation
+     * Technical specifications
+     * Project patterns and conventions
+     * API documentation
+     * Component documentation
+
+2. **Documentation Priority Order**
+   - Read documentation in the following order:
+     1. `architecture.md` - System overview and structure
+     2. `technical.md` - Technical specifications and patterns
+     3. Additional specialized documentation files
+
+## Documentation Update Protocol
+
+### When to Update Documentation
+Documentation MUST be updated in the following scenarios:
+
+1. **Code Changes**
+   - After implementing new features
+   - After modifying existing functionality
+   - After refactoring code
+   - After changing architectural patterns
+   - After adding or modifying APIs
+   - After introducing new dependencies
+
+2. **Pattern Changes**
+   - When establishing new coding patterns
+   - When deprecating old patterns
+   - When modifying existing patterns
+   - When introducing new best practices
+
+3. **Architecture Changes**
+   - When modifying system structure
+   - When adding new services or components
+   - When changing interaction patterns between components
+   - When updating deployment configurations
+
+### What to Update
+
+1. **Technical Documentation** (`.cursor/docs/technical.md`)
+   - New technical decisions
+   - Pattern changes
+   - API changes
+   - Dependency updates
+   - Implementation details
+
+2. **Architecture Documentation** (`.cursor/docs/architecture.md`)
+   - System structure changes
+   - Component relationship updates
+   - Data flow modifications
+   - Integration points
+
+3. **Other Specialized Documentation**
+   - Update relevant specialized docs based on changes
+   - Create new documentation files when introducing new major features or subsystems
+
+## Planning File Management
+
+### Task Implementation Documentation
+
+1. **Before Implementation**
+   - Review relevant planning files in `.cursor/development/`
+   - Understand task requirements and subtasks
+   - Verify current status and dependencies
+
+2. **During Implementation**
+   - Track progress in planning files
+   - Mark completed subtasks
+   - Document any deviations from original plan
+   - Note any blockers or dependencies
+
+3. **After Implementation**
+   - Update planning files with completed tasks
+   - Document completion dates
+   - Add any relevant notes or observations
+   - Link to related documentation updates
+
+### Planning File Updates
+
+1. **Status Updates**
+   - Mark tasks as completed
+   - Update progress percentages
+   - Document completion dates
+   - Note any remaining subtasks
+
+2. **Additional Information**
+   - Add implementation notes
+   - Document any challenges encountered
+   - Record solutions implemented
+   - Note any follow-up tasks
+
+## Documentation Quality Standards
+
+1. **Clarity**
+   - Use clear, concise language
+   - Include relevant code examples
+   - Provide context for changes
+   - Explain the "why" behind decisions
+
+2. **Completeness**
+   - Cover all relevant aspects
+   - Include edge cases
+   - Document assumptions
+   - Note dependencies
+
+3. **Accuracy**
+   - Ensure documentation reflects current state
+   - Remove outdated information
+   - Update version numbers
+   - Verify all examples work
+
+4. **Organization**
+   - Use consistent formatting
+   - Maintain clear section hierarchy
+   - Include table of contents for longer docs
+   - Use appropriate markdown formatting
+
+## Compliance
+
+- All team members and AI assistants MUST follow these documentation protocols
+- Documentation updates should be treated as part of the definition of done
+- No task is considered complete until all relevant documentation is updated
+- Regular documentation audits should be performed to ensure compliance

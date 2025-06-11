@@ -1,0 +1,123 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+## Rule Name: perseus.mdc
+## Description: Full-Stack TypeScript (React & Node.js) Project Development Standards
+
+---
+globs:
+alwaysApply: Manual
+---
+
+# Full-Stack TypeScript (React & Node.js) Development Standards
+
+## 🤖 Core Implementation Principles
+
+- **Preserve Existing Patterns**: ALWAYS Respect existing implementation and patterns. Do not modify unrelated code or override established structures unless explicitly requested.
+ Avoid removing, rewriting, or altering unrelated logic. Do not assume authority to override existing structures — maintain consistency and stability.
+
+- **Documentation-First Approach**: For any uncertainty, or when advanced, idiomatic, or low-level behavior is required, refer to and follow the official documentation of the relevant technology consult official documentation.
+Always use authoritative, up-to-date sources.
+
+
+## 🌐 Technology Implementation Standards
+
+### TypeScript Usage
+- **Strong Typing Required**: ALWAYS Use TypeScript for all code with strict type checking enabled.
+- **Type Definitions**: ALWAYS Create explicit interfaces/types for all props, state, and data structures.
+- **Type Safety**: ALWAYS Avoid `any` type. Use union types, generics, or unknown with type guards instead.
+- **Type Exports**: Export all shared types from dedicated type files for reuse.
+
+### JavaScript Standards
+- **ES6+ Required**: ALWAYS Use modern syntax (arrow functions, let/const, destructuring, async/await).
+- **Functional Patterns**: Prefer pure functions, immutability, and composition over inheritance.
+- **Avoid Antipatterns**: ALWAYS Avoid deprecated or legacy JS patterns. No var, function constructors, ETC.
+- **Runtime Compatibility**: Ensure compatibility with project's targeted environments.
+
+### Architecture Separation
+- **Client-Server Boundary**: Frontend (React) handles UI and state; Backend (Node.js) handles business logic, data processing, and database or API communication.
+- **Clean Communication**: Use only well-defined API calls (REST/GraphQL) between frontend and backend.
+- **No Cross-Contamination**: Never implement server logic in frontend or vice versa.
+
+### Backend Structure
+- **Layered Architecture**: Implement distinct layers (routes, controllers, services, data access).
+- **Thin Controllers**: Always keep Route handlers thin - they should only validate input, delegate to services, and format responses.
+- **Service Encapsulation**: Encapsulate all business logic in service modules.
+- **Data Layer Isolation**: Keep database and external API interactions in dedicated modules.
+
+### Performance Patterns
+- **Async by Default**: Always prefer asynchronous patterns! Use async/await (or promise chains) for all I/O operations and database calls.
+- **Prevent Event Loop Blocking**: Avoid synchronous operations in request handlers.
+- **Offload Heavy Tasks**: Move CPU-intensive operations to background jobs or workers.
+- **Streaming**: Implement streaming for large data processing where appropriate.
+
+### Technology Stack Conformity
+- **Approved Libraries Only**: ALWAYS Use only approved technologies, frameworks and libraries. For example:
+  - HTTP: Express.js
+  - State Management: Redux Toolkit, react-query
+  - Validation: Zod
+  - Testing: Jest and React Testing Library
+- **New Library Protocol**: Obtain explicit approval before introducing any new libraries.
+
+## ✨ Code Quality Standards
+
+### Formatting and Style
+- **Automation**: Always Use ESLint and Prettier with project configuration.
+- **Zero Linting Errors**: All code must pass linting with no errors or warnings.
+- **Descriptive Nameing**: ALWAYS use descriptive names.
+- **Naming Conventions**:
+  - Components: PascalCase (UserProfile)
+  - Functions/Variables: camelCase (getUserData)
+  - Constants: UPPER_SNAKE_CASE (API_ENDPOINT)
+  - Files: Match the primary export name (UserProfile.tsx)
+
+### Code Organization
+- **Feature-Based Structure**: Group related code by feature or domain.
+- **Clear Separation**: Keep client code, server code, and shared utilities in distinct folders.
+- **Import Order**: Group imports by external libraries, then internal modules, then relative paths.
+- **Export Consistency**: Use named exports for most code; default exports only for main components.
+
+### Code Modularity
+- **DRY Implementation**: Extract repeated logic into utility functions or shared components.
+- **Size Constraints**: Files must not exceed 500 lines; functions must not exceed 70 lines.
+- **Single Responsibility**: Each module and function should have one clearly defined purpose.
+- **Cohesion**: Related functionality should be grouped together.
+
+### Documentation
+- **Self-Documenting Code**: Write clear, descriptive code that explains itself.
+- **TypeDoc/JSDoc**: Document complex functions, interfaces, and non-obvious logic.
+- **Component Props**: Document all component props with descriptions and examples.
+- **No Dead Code**: Remove commented-out code, unused functions, or TODO comments.
+
+### Pattern Consistency
+- **Follow Established Patterns**: Always adhere to existing patterns in the codebase.
+- **Pattern Documentation**: Document new patterns before implementation.
+
+## ⚠️ Error Handling & Data Safety
+
+### Backend Error Management
+- **Structured Try/Catch**: ALWAYS Implement try/catch for all async operations.
+- **Specific HTTP Codes**: Return appropriate status codes (400, 401, 403, 404, 500, etc.).
+- **Error Objects**: Return consistent error response objects {status, message, details}.
+- **Secure Logging**: Log errors with context but never expose stack traces to clients.
+- **Graceful Degradation**: Implement fallbacks for non-critical failures.
+
+### Frontend Error Handling
+- **Error Boundaries**: Implement React Error Boundaries at appropriate component levels.
+- **Query Error States**: Use react-query error states to display user-friendly messages.
+- **Async Error Catching**: Wrap all async event handlers in try/catch blocks.
+- **Fallback UI**: Provide fallback UI components for error states.
+
+### Data Validation
+- **Client Validation**: Validate all user inputs with Zod before form submission.
+- **Real-Time Feedback**: Provide immediate validation feedback to users.
+- **Server Validation**: Re-validate all inputs on the server regardless of client validation.
+- **Request Schema**: Define and enforce Zod schemas for all API endpoints.
+
+### Security Measures
+- **Input Sanitization**: Sanitize all user inputs to prevent XSS attacks.
+- **Output Encoding**: Encode outputs when rendering user-provided content.
+- **CSRF Protection**: Implement CSRF tokens for state-changing operations.
+- **Data Exposure**: Never expose sensitive data (passwords, tokens, internal IDs) to clients.
